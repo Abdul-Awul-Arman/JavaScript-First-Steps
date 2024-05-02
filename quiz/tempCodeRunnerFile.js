@@ -1,0 +1,1 @@
+let statement= document.querySelector("#statement");
