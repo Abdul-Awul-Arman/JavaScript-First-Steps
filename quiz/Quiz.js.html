@@ -1,57 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0063)https://anjana.dev/javascript-first-steps/2-jsquiz-starter.html -->
 <html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+  <link rel="stylesheet" href="quiz.css">
     <title>Quiz.js</title>
-    <style>
-        body {
-            margin: 1rem auto;
-            padding: 3rem;
-            font-family: sans-serif;
-        }
-        header {
-            width: 50%;
-            margin: 1em auto;
-        }
-        main {
-            min-width: 25rem;
-            max-width: 50%;
-            margin: 0px auto;
-            display:flex; 
-            flex-direction: column;
-        }
-        #statement {
-            border: 1px solid black;
-            border-radius: 0.5rem;
-            box-shadow: 5px 5px 5px gray;
-            padding: 1rem;
-            font-size: x-large;
-            text-align: center;
-            margin: 1rem 0px;
-            min-height: 2em;
-        }
-        #explanation {
-            padding: 1rem;
-            text-align: center;
-        }
-        #options {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        button {
-            padding: 0.5rem;
-            font-size: medium;
-            border-radius: 5px;
-            margin-bottom:5px;
-        }
-        .correct {
-            background-color: lightgreen;
-        }
-        .incorrect {
-            background-color: lightpink;
-        }
-    </style>
   </head>
   <body data-new-gr-c-s-check-loaded="14.1169.0" data-gr-ext-installed="">
     <header>
@@ -89,9 +40,9 @@
     // TODO 2: Declare & assign a variable called fact
     // Its value should be an object with a statement, true/false answer, and explanation 
 
-    let fact=explanation={
+    let fact={
         statement:"JavaScript was invented in 1995",
-        answer:true,
+        answer:"true",
         explanation:"Brendan Eich created JS at Netscape in 1995. The initial version of the language was written in just 10 days."
     };
     
@@ -118,26 +69,42 @@
         return guess===fact.answer;
     }
 
-    
-
 
     // TODO 6A: Use a for loop to add a click event listener to each of the optionButtons
-            // TODO 6: Within the event handler function, display the fact's explanation by setting the text of the explanation element
+
+    for(let button of optionButtons){
+
+      // TODO 6: Within the event handler function, display the fact's explanation by setting the text of the explanation element
+      button.addEventListener("click",(event)=>{
+        
+        explanation.textContent=fact.explanation;
+        // TODO 7: Within the event handler function, 
+        // Use a for loop to disable all the option buttons
+        for(let button of optionButtons){
+          disable(button);
+        }
 
 
-            // TODO 7: Within the event handler function, 
-            // Use a for loop to disable all the option buttons
-
-
-            // TODO 8: Within the event handler function,
-            // Get the guessed value from the clicked button
-            // Use a conditional to compare the guess to the fact's answer
-            // and add the "correct"/"incorrect" class as appropriate
-
-    
-
-
-   </script>
+        console.log(button.value)
+        
+        
+        // TODO 8: Within the event handler function,
+        // Get the guessed value from the clicked button
+        if(isCorrect(button.value)){
+          button.classList.add("correct")
+        }
+        else{
+          button.classList.add("incorrect")
+        }
+        // Use a conditional to compare the guess to the fact's answer
+        // and add the "correct"/"incorrect" class as appropriate
+      })
+    }
+      
+      
+      
+      
+    </script>
 
 </body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
       div.grammarly-desktop-integration {
