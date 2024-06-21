@@ -64,6 +64,9 @@
         .hidden {
             display: none;
         }
+        #image-frame{
+            max-width: 20rem;
+        }
     </style>
 </head>
 
@@ -165,16 +168,15 @@
             function buttonHandler(e) {
                 if (e.target.value === correctAnswer) {
                     
-                    e.target.classList="correct";
+                    e.target.classList="correct","optionButton";
 
                 } else {
-                    e.target.classList.add("incorrect");
-                    document.querySelector(`button[value="${correctAnswer}"]`).classList.add("correct");
-                    console.log(document.querySelector('[class~="incorrect"]'));
+                    e.target.classList.add("incorrect","optionButton");
+                    document.querySelector(`button[value="${correctAnswer}"]`).classList.add("correct,optionButton");
                 }
 
                 let d=document.querySelectorAll('.optionButton');
-                for(let i=0;i<2;i++){
+                for(let i=0;i<3;i++){
                     d[i].setAttribute("disabled","");
                 }
                 console.log(d);
